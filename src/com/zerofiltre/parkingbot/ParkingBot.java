@@ -1,26 +1,35 @@
 package com.zerofiltre.parkingbot;
 
+
+import com.zerofiltre.parkingbot.service.ParkingService;
+
 public class ParkingBot {
 
+    static String completion = "des équipes du parking Zerofiltre";
+    static ParkingService parkingService = new ParkingService();
     /**
-     * Ceci est la  fonction principale d'un programme JAVA
-     * @param args representent les données passées en parametre lors du lancement du programme
+     * Ceci est la méthode Main
+     *
+     * @param args : Tableau de données entrées lors du lancement de l'application
      */
     public static void main(String[] args) {
-        sayHello(args);
+        sayHello();
+        sayBye();
     }
 
-    /**
-     * Permet d'accueillir et de presenter les services à l'utilisateur  du Parking
-     * @param args represente le nom de l'utilisateur
-     */
-    private static void sayHello(String[] args) {
-        String welcomeMessage = "Hello "+ args[0] + ", bienvenue au Parking Zerofiltre";
-        String services = "Nous offrons les services suivantes: Gardiennage, Blanchisserie ... ";
-        String warning = "Dépechez-vous d'entrer car  il n'y aura bientôt plus de places ";
 
-        System.out.println(welcomeMessage);
-        System.out.println(services);
-        System.out.println(warning.toUpperCase());
+    /**
+     * Cette méthode permet de dire Hello
+     */
+    private static void sayHello() {
+        String welcomeSentence = "Hello, recevez la bienvenue " + completion;
+        System.out.println(welcomeSentence);
+        String parkService = parkingService.parking;
+        String washingService =  parkingService.washing;
+        System.out.println(" Nous proposons les services suivants : " +parkService+ " ET " +washingService);
+    }
+
+    private static void sayBye() {
+        System.out.println("Recevez les aurevoirs "+completion);
     }
 }
