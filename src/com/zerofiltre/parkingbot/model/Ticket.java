@@ -1,7 +1,9 @@
 package com.zerofiltre.parkingbot.model;
 
 import java.util.Date;
+
 public class Ticket {
+
     private String amount;
     private Vehicle vehicle;
     private Date enteringTime;
@@ -41,11 +43,7 @@ public class Ticket {
 
     @Override
     public String toString() {
-        return "Ticket{" +
-                "amount='" + amount + '\'' +
-                ", vehicle=" + vehicle +
-                ", enteringTime=" + enteringTime +
-                ", exitTime=" + exitTime +
-                '}';
+       return "Ticket d'un montant de :" +amount+ " € pour véhicule de type " + vehicle.getCategory() + " immatriculé: " +vehicle.getRegistrationNumber()+ " entré à " + enteringTime + " et sorti à " + exitTime;
+
     }
 }
