@@ -35,6 +35,9 @@ public class ParkingBot {
         car.setRegistrationNumber("JDI-48-SOS");
         Ticket carTicket = parkingService.processIncomingVehicle(car);
         System.out.println(carTicket);
+        System.out.println(parkingService.processExitingVehicle(vehicleTicket));
+        System.out.println(parkingService.processExitingVehicle(bicycleTicket));
+        System.out.println(parkingService.processExitingVehicle(carTicket));
     }
 
 }
