@@ -1,12 +1,8 @@
 package com.zerofiltre.parkingbot;
 
-import com.zerofiltre.parkingbot.model.Bicycle;
-import com.zerofiltre.parkingbot.model.Car;
 import com.zerofiltre.parkingbot.model.Ticket;
 import com.zerofiltre.parkingbot.model.Vehicle;
 import com.zerofiltre.parkingbot.service.ParkingService;
-
-import java.util.*;
 
 public class ParkingBot {
 
@@ -19,62 +15,31 @@ public class ParkingBot {
      */
     public static void main(String[] args) {
         processVehicles();
+//        int a = 10 ;
+//        int b = a;
+//
+//        System.out.println("a =>" +a );
+//        System.out.println("b =>" +b );
+//        a = 15;
+//        System.out.println("a =>" +a );
+//        System.out.println("b =>" +b );
+//
+//        a = 0;
+//        System.out.println("a =>" +a );
+//        System.out.println("b =>" +b );
     }
 
     private static void processVehicles() {
 
-        //List<Ticket> tickets =  new ArrayList<>();
-        Set<Ticket> tickets = new HashSet<>();
         Vehicle vehicle = new Vehicle();
-        vehicle.setRegistrationNumber("LS-458-4P");
+        vehicle.setRegistrationNumber("LS-324-PM");
         Ticket vehicleTicket = parkingService.processIncomingVehicle(vehicle);
-       tickets.add(vehicleTicket);
+        System.out.println(vehicleTicket);
+        parkingService.processExitingVehicle(vehicleTicket);
         System.out.println(vehicleTicket);
 
-        Vehicle bicycle = new Bicycle();
-        bicycle.setRegistrationNumber("FO-526-PM");
-        Ticket bicycleTicket = parkingService.processIncomingVehicle(bicycle);
-      tickets.add(bicycleTicket);
-        System.out.println(bicycleTicket);
-
-        Vehicle car = new Car();
-        car.setRegistrationNumber("JDI-48-SOS");
-        Ticket carTicket = parkingService.processIncomingVehicle(car);
-       tickets.add(carTicket);
-        System.out.println(carTicket);
-
-//        Ticket[] tickets = new Ticket[3];
-//        tickets[0] = vehicleTicket;
-//        tickets[1] = bicycleTicket;
-//        tickets[2] = carTicket;
-
-        System.out.println("Traitement des sorties par lot");
-
-//        for (int i = 0; i < tickets.size(); i++) {
-//            System.out.println(parkingService.processExitingVehicle(tickets.get(i)));
-
-        Map<Integer,Ticket> exitOrder = new HashMap<>();
-        int position = 0;
-
-        for (Ticket ticket: tickets) {
-            exitOrder.put(position,ticket);
-            position++;
-            System.out.println(parkingService.processExitingVehicle(ticket));
-
-        }
-
-
-
-        //for (Ticket ticket : tickets) {
-          //  System.out.println(parkingService.processExitingVehicle(ticket));
-
-        Set<Integer> keySet = exitOrder.keySet();
-
-        for(int key: keySet) {
-            System.out.println("Position dans la liste : " + key + " : "+exitOrder.get(key).getVehicle().getCategory());
-        }
 
     }
 
-    }
 
+}
