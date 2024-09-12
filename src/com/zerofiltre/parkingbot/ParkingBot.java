@@ -1,8 +1,13 @@
 package com.zerofiltre.parkingbot;
 
-import com.zerofiltre.parkingbot.model.Ticket;
+
+import com.zerofiltre.parkingbot.model.Parking;
 import com.zerofiltre.parkingbot.model.Vehicle;
 import com.zerofiltre.parkingbot.service.ParkingService;
+
+import java.util.List;
+
+import static com.zerofiltre.parkingbot.model.ParkingTypeEnum.SPOT;
 
 public class ParkingBot {
 
@@ -14,32 +19,23 @@ public class ParkingBot {
      * @param args : Tableau de données entrées lors du lancement de l'application
      */
     public static void main(String[] args) {
-        processVehicles();
-//        int a = 10 ;
-//        int b = a;
-//
-//        System.out.println("a =>" +a );
-//        System.out.println("b =>" +b );
-//        a = 15;
-//        System.out.println("a =>" +a );
-//        System.out.println("b =>" +b );
-//
-//        a = 0;
-//        System.out.println("a =>" +a );
-//        System.out.println("b =>" +b );
+Parking parking = parkingService.initParking();
+listCars(parking);
     }
 
-    private static void processVehicles() {
-
-        Vehicle vehicle = new Vehicle();
-        vehicle.setRegistrationNumber("LS-324-PM");
-        Ticket vehicleTicket = parkingService.processIncomingVehicle(vehicle);
-        System.out.println(vehicleTicket);
-        parkingService.processExitingVehicle(vehicleTicket);
-        System.out.println(vehicleTicket);
-
-
+    static void listCars (Parking parking){
+        if (SPOT.equals(parking.getType())){
+            Vehicle vehicle = parking.getVehicle();
+            System.out.println("Vehicule d'immatriculation "
+            + vehicle.getRegistrationNumber()
+               +" situé à la place "
+                    + vehicle.getParkingSpotNumber());
+        }else{
+            List<Parking> subParkings = parking.getSubParkings();
+            for (Parking subParking : subParkings){
+                listCars(subParking);
+            }
+        }
     }
-
 
 }
