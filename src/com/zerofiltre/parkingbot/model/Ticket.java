@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Ticket {
 
-    private double  amount;
+    private double amount;
     private Vehicle vehicle;
     private Date enteringTime;
     private Date exitTime;
@@ -43,7 +43,8 @@ public class Ticket {
 
     @Override
     public String toString() {
-       return "Ticket d'un montant de :" +amount+ " € pour véhicule de type " + vehicle.getCategory() + " immatriculé: " +vehicle.getRegistrationNumber()+ " entré à " + enteringTime + " et sorti à " + exitTime;
-
+        return "Ticket d'un montant de: " + amount + " € pour un véhicle de type " + vehicle.getCategory() +
+                " entré à " + enteringTime + " sorti à " + exitTime;
     }
+
 }

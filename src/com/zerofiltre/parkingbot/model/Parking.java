@@ -7,15 +7,8 @@ public class Parking {
 
     List<Parking> subParkings = new ArrayList<>();
     Vehicle vehicle;
+    ParkingTypeEnum type;
     int number;
-
-    public Vehicle getVehicle() {
-        return vehicle;
-    }
-
-    public void setVehicle(Vehicle vehicle) {
-        this.vehicle = vehicle;
-    }
 
     public List<Parking> getSubParkings() {
         return subParkings;
@@ -25,12 +18,12 @@ public class Parking {
         this.subParkings = subParkings;
     }
 
-    public int getNumber() {
-        return number;
+    public Vehicle getVehicle() {
+        return vehicle;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
 
     public ParkingTypeEnum getType() {
@@ -41,7 +34,11 @@ public class Parking {
         this.type = type;
     }
 
-    ParkingTypeEnum type;
+    public int getNumber() {
+        return number;
+    }
 
-
+    public void setNumber(int number) {
+        this.number = number;
+    }
 }
